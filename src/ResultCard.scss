@@ -1,0 +1,52 @@
+@mixin flex-row() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    > * {
+        padding: 4px;
+    }
+}
+
+@mixin card-content() {
+    padding: 8px;
+    justify-content: space-between;
+    @include flex-row;
+    > .ident,
+    > .stats {
+        @include flex-row;
+    }
+}
+.result-card {
+    margin: 12px 0;
+    color: #336;
+    .mdc-typography {
+        margin: 0;
+    }
+    .mdc-card__primary-action {
+        @include card-content;
+    }
+}
+
+.mdc-text-field {
+    width: 100%;
+}
+
+.stat-counter {
+    text-align: center;
+    margin: 0 12px;
+    width: 120px;
+    label {
+        font-weight: bold;
+    }
+    > .stat {
+        font-size: 48px;
+        line-height: 48px;
+    }
+
+    &.repos {
+        color: #006fcf;
+    }
+    &.followers {
+        color: #00cf4f;
+    }
+}

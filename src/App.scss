@@ -1,0 +1,27 @@
+.backdrop {
+    background-color: darken(#fcfcfd, 5%);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    > .results {
+        overflow-y: auto;
+        flex-shrink: 1;
+        margin: 0;
+        * {
+            overflow: hidden;
+        }
+    }
+}
+
+.loading-indicator {
+    text-align: center;
+    margin: 12px auto;
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #999;
+    background-color: #eee;
+    color: #ff7f00;
+    border-radius: 4px;
+}

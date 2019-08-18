@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.scss'
+import {Cell, Grid, Row} from '@material/react-layout-grid';
+import ComposedSearchProvider from './ComposedSearchProvider';
+import TopBar from './TopBar';
+import Loader from './Loader';
+import 'material-components-web/material-components-web.scss';
 
-function App() {
+
+function App () {
+  const [tmpQueryText, setTmpQueryText] = useState('');
+  const [queryText, setQueryText] = useState('');
+  function onSubmitForm(e) {
+    setQueryText(tmpQueryText);
+    e.preventDefault();
+    return false;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='backdrop'>
+      <TopBar onSearch={setQueryText} />
+      <ComposedSearchProvider>
+        <Grid className='results'>
+          <Row>
+            <Cell columns={3} />
+            <Cell columns={6}>
+              <Loader query={queryText} />
+            </Cell>
+          </Row>
+        </Grid>
+      </ComposedSearchProvider>
+      <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

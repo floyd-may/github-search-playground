@@ -1,0 +1,9 @@
+@import '@material/elevation/mixins';
+
+.top-bar.mdc-layout-grid {
+    background-color: #fff;
+    @include mdc-elevation(3);
+    align-self: stretch;
+    margin: 0;
+    z-index: 1000;
+}
